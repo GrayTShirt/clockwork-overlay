@@ -1,0 +1,34 @@
+#!/sbin/runscript
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="reload"
+
+pidfile=/var/run/clockd.pid
+clockd=/usr/sbin/clockd
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting clockwork master"
+	start-stop-daemon --start --quiet \
+		--background --exec ${clockd} --pidfile ${pidfile}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping clockwork master"
+	start-stop-daemon --stop --quiet \
+		--exec ${clockd} --pidfile ${pidfile}
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading clockwork master"
+	start-stop-daemon --exec ${clockd} --signal HUP \
+		--pidfile ${pidfile}
+	eend $?
+}
+
+# vim:ts=4
