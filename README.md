@@ -1,6 +1,6 @@
 #Clockwork Overlay
 
-This is a relatively simple overlay to just a few ebuilds to support the Clockwork Configuration Management System.
+This is a relatively simple overlay to just a few ebuilds to support the [Clockwork Configuration Management System.](https://github.com/filefrog/clockwork)
 
 ##Gentoo Specific Notes
 
